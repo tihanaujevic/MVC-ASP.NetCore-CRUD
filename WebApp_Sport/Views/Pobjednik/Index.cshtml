@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApp_Sport.Models.Pobjednik>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <style>
+        body {
+            background-image: url('slika/honda.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+
+<h1>Pobjednici</h1>
+
+<p>
+    <a asp-action="Create">Dodaj novog</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPobjednik">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPobjednik">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPobjednik">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

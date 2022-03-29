@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApp_Sport.Models.Dogadaj>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@using (Html.BeginForm("Index", "Dogadaj", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="Search" />
+}
+
+<style>
+    body {
+        background-image: url('slika/honda.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+
+<h1>Događaji</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Naziv utrke
+            </th>
+            <th>
+                Naziv sporta
+            </th>
+            <th>
+                Ime pobjednika
+            </th>
+            <th>
+                Datum
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderByDescending(item => item.Datum))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivUtrke)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivSporta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivPobjednika)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
